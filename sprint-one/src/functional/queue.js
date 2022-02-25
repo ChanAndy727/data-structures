@@ -18,6 +18,7 @@ var Queue = function() {
       for (let key in storage) {
         var newKey = (parseInt(key) - 1);
         storage[newKey] = storage[key];
+        delete storage[key];
       }
     }
     return value;
@@ -26,6 +27,5 @@ var Queue = function() {
   someInstance.size = function() {
     return Object.keys(storage).length;
   };
-
   return someInstance;
 };

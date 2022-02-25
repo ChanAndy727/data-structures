@@ -19,10 +19,12 @@ var Stack = function() {
   someInstance.pop = function() {
     var top;
     if (storage['0']) {
-      top = storage[0];
+      top = storage['0'];
+      delete storage['0'];
       for (let key in storage) {
         var newKey = parseInt(key) - 1;
         storage[newKey] = storage[key];
+        delete storage[key];
       }
     }
     return top;
