@@ -4,7 +4,6 @@ var Tree = function(value) {
 
   // your code here
   newTree.children = [];
-  newTree.index = 0;
   // fix me
   _.extend(newTree, treeMethods);
   return newTree;
@@ -19,10 +18,16 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   //console.log(this.children);
-
   // base case
-
   // recursive case
+  var bool = this.value === target;
+  if (this.children.length > 0 && bool === false) {
+    for (let i = 0; i < this.children.length; i++) {
+      bool = bool || this.children[i].contains(target);
+    }
+  }
+  return bool;
+
 };
 
 
